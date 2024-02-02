@@ -9,3 +9,7 @@ Yo!
 
 [![Deploy to Cyclic](https://deploy.cyclic.app/button.svg)](https://deploy.cyclic.app/)
 
+https://dev.to/nedsoft/getting-started-with-sequelize-and-postgres-emp
+
+create seeders form sequelize documentaion
+migrations/seeders
