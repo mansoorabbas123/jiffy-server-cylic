@@ -1,11 +1,24 @@
-const express = require('express')
-const app = express()
+const express = require('express');
 const db = require('./models');
+const env = require('dotenv');
+const dbConnect = require('./dbConnect');
+const adminRoutes = require('./routes/admin/auth')
+const refreshTokenRoutes = require('./routes/refreshToken');
+
+// express app
+const app = express();
+
+env.config();
+dbConnect();
+
+app.use(express.json());
+
+// admin routes
+app.use('/api',adminRoutes);
 
 app.all('/', async(req, res) => {
     console.log("Just got a request!")
-    const user = await db.User.findAll();
-    console.log("user",user)
     res.send('Yo!')
 })
+
 app.listen(process.env.PORT || 3000)
