@@ -8,8 +8,9 @@ project setup:
 
 install node version 18+
 npm install 
-npm run db-seed:run
+add env file
 npm run db-migrate:run
+npm run db-seed:run
 
 npm start
 
@@ -31,13 +32,14 @@ steps:
 
 so far:
 created node repo with express and sequelize, setup migrations and seeders along db test
-created seeder file for creating admin user (incomplete)
-created migration for adding role in user table ( later i will combine it with seeder and first migration )
+created seeder file for creating admin user
+created migration for adding role in user table
+created seeders for creating admin user in database
 JWT authentication with refresh token strategy
 
 CREATE APIS FOR CATEGORY:
 Steps:
-1) Create migrations for category tables and its relations
-2) Create middleware for admin authentication and athorization
+1) Create migrations for category table (done)
+2) Create middleware for authentication and athorization (done)
 3) Create endpoints for create/get/update/delete category
 

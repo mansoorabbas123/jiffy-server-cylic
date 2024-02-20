@@ -86,6 +86,7 @@ module.exports = {
       name: 'admin',
       email: 'admin@gmail.com',
       password: hashPassword,
+      role: "admin",
       created_at: new Date(),
       updated_at: new Date()
     }]);
