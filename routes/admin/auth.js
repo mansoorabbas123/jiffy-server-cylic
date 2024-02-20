@@ -8,7 +8,7 @@ const verifyRefreshToken = require("../../utils/verfiyRefreshToken");
 
 const router = Router();
 
-router.post('/admin/signup', async (req, res) => {
+router.post('/signup', async (req, res) => {
     try {
 
     } catch (error) {
@@ -17,7 +17,7 @@ router.post('/admin/signup', async (req, res) => {
     res.send("signup");
 });
 
-router.post('/admin/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     try {
         const { error } = await loginBodyValidation(req.body);
         if (error) {
@@ -43,7 +43,7 @@ router.post('/admin/login', async (req, res) => {
     }
 });
 
-router.delete("/admin/logout", async (req, res) => {
+router.delete("/logout", async (req, res) => {
     try {
         const { error } = refreshTokenBodyValidation(req.body);
         if (error)
@@ -71,7 +71,7 @@ router.delete("/admin/logout", async (req, res) => {
     }
 });
 
-router.post('/admin/refresh_token', async (req, res) => {
+router.post('/refresh_token', async (req, res) => {
     try {
         const { error } = await refreshTokenBodyValidation(req.body);
         if (error) {
