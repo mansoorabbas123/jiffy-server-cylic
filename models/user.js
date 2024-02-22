@@ -1,31 +1,50 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  User.init({
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    role: {
-      type: DataTypes.ENUM,
-      values: ['user',"admin"],
-      defaultValue: ['user']
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('user', {
+    id: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true
     },
+    name: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    email: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    password: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    created_at: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    updated_at: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    role: {
+      type: DataTypes.ENUM("user","admin"),
+      allowNull: true,
+      defaultValue: "user"
+    }
   }, {
     sequelize,
-    modelName: 'User', // Model name
-    tableName: 'users' // Table name
+    tableName: 'users',
+    schema: 'public',
+    timestamps: false,
+    indexes: [
+      {
+        name: "users_pkey",
+        unique: true,
+        fields: [
+          { name: "id" },
+        ]
+      },
+    ]
   });
-  return User;
 };

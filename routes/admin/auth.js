@@ -1,10 +1,10 @@
 const { Router } = require("express");
-const db = require("../../models");
 const { QueryTypes } = require("sequelize");
 const bcrypt = require('bcrypt');
-const { loginBodyValidation, refreshTokenBodyValidation } = require("../../utils/authValidationSchema");
+const { loginBodyValidation, refreshTokenBodyValidation } = require("../../utils/validations/authValidationSchema");
 const { generateTokens } = require("../../utils/generateTokens");
 const verifyRefreshToken = require("../../utils/verfiyRefreshToken");
+const { db } = require("../../dbConnect");
 
 const router = Router();
 

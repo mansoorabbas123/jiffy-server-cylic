@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
-const db = require("../models");
 const { QueryTypes } = require("sequelize");
+const { db } = require("../dbConnect");
 
 const verifyRefreshToken = (refreshToken) => {
   return new Promise( async (res,rej) => {

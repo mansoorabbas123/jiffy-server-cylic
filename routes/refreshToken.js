@@ -1,7 +1,7 @@
 const { Router } = require("express");
-const { refreshTokenBodyValidation } = require("../utils/authValidationSchema");
 const verifyRefreshToken = require("../utils/verfiyRefreshToken");
 const jwt = require('jsonwebtoken');
+const { refreshTokenBodyValidation } = require("../utils/validations/authValidationSchema");
 
 const router = Router();
 

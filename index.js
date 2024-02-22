@@ -1,7 +1,7 @@
 const express = require('express');
-const db = require('./models');
 const env = require('dotenv');
-const dbConnect = require('./dbConnect');
+const {dbConnect,db} = require('./dbConnect');
+const user = require('./models/user');
 const authRoutes = require('./routes/admin/auth');
 const categoryRoutes = require('./routes/admin/category');
 const refreshTokenRoutes = require('./routes/refreshToken');
@@ -11,7 +11,7 @@ const authMiddleware = require('./middlewares/auth');
 const app = express();
 
 env.config();
-dbConnect();
+dbConnect()
 
 // parse JSON payloads 
 app.use(express.json());
@@ -22,7 +22,7 @@ app.use('/api/admin', authMiddleware ,categoryRoutes);
 
 app.all('/', async(req, res) => {
     console.log("Just got a request!")
-    res.send('Yo!')
+        res.send('Yo!')
 })
 
 app.listen(process.env.PORT || 3000)
