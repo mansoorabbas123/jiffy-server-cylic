@@ -11,7 +11,7 @@ npm install
 add env file
 npm run db-migrate:run
 npm run db-seed:run
-
+npm run generate-models
 npm start
 
 ### Deploy it in 7 seconds: 
@@ -36,10 +36,12 @@ created seeder file for creating admin user
 created migration for adding role in user table
 created seeders for creating admin user in database
 JWT authentication with refresh token strategy
+added cloudinary for file upload and multer for image handling
+added scripts for model generations
 
 CREATE APIS FOR CATEGORY:
 Steps:
 1) Create migrations for category table (done)
 2) Create middleware for authentication and athorization (done)
-3) Create endpoints for create/get/update/delete category
+3) Create endpoints for create/get/update/delete category (pending)
 

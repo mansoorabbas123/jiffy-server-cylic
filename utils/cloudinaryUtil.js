@@ -18,7 +18,9 @@ cloudinary.config({
 // Function to upload image from buffer to Cloudinary
 async function uploadImageToCloudinary(image) {
   return new Promise((resolve,reject) => {
-    cloudinary.uploader.upload_stream((error, uploadResult) => {
+    cloudinary.uploader.upload_stream({ 
+      folder: 'jiffy_store' 
+    },(error, uploadResult) => {
       if(error) return reject(error);
         return resolve(uploadResult);
     }).end(image.buffer);

@@ -18,7 +18,7 @@ module.exports = {
       allowNull: false,
       type: Sequelize.STRING,
     },
-    categoryId: {
+    category_id: {
        allowNull: false,
        unique: true,
        type: Sequelize.INTEGER,

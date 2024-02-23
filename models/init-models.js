@@ -12,8 +12,8 @@ function initModels(sequelize) {
   var userToken = _userToken(sequelize, DataTypes);
   var user = _user(sequelize, DataTypes);
 
-  image.belongsTo(category, { as: "category", foreignKey: "categoryId"});
-  category.hasOne(image, { as: "image", foreignKey: "categoryId"});
+  image.belongsTo(category, { as: "category", foreignKey: "category_id"});
+  category.hasOne(image, { as: "image", foreignKey: "category_id"});
   userToken.belongsTo(user, { as: "user", foreignKey: "user_id"});
   user.hasMany(userToken, { as: "user_tokens", foreignKey: "user_id"});
 

@@ -15,14 +15,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(255),
       allowNull: false
     },
-    categoryId: {
+    category_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'categories',
         key: 'id'
       },
-      unique: "images_categoryId_key"
+      unique: "images_category_id_key"
     },
     created_at: {
       type: DataTypes.DATE,
@@ -39,10 +39,10 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: false,
     indexes: [
       {
-        name: "images_categoryId_key",
+        name: "images_category_id_key",
         unique: true,
         fields: [
-          { name: "categoryId" },
+          { name: "category_id" },
         ]
       },
       {
