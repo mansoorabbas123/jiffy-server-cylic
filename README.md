@@ -41,7 +41,12 @@ added scripts for model generations
 
 CREATE APIS FOR CATEGORY:
 Steps:
-1) Create migrations for category table (done)
+1) Create migrations for categories table (done)
 2) Create middleware for authentication and athorization (done)
-3) Create endpoints for create/get/update/delete category (pending)
+3) Create endpoints for create(done)/get(done)/update/delete category (pending)
 
+
+CREATE APIS FOR PRODUCT:
+Steps:
+1) Create migrations for products table (done)
+2) Create endpoints for create/get/update/delete category (pending)

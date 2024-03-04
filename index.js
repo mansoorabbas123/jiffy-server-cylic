@@ -4,6 +4,7 @@ const { dbConnect, db } = require('./dbConnect');
 const user = require('./models/user');
 const authRoutes = require('./routes/admin/auth');
 const categoryRoutes = require('./routes/admin/category');
+const productRoutes = require('./routes/admin/product');
 const refreshTokenRoutes = require('./routes/refreshToken');
 const authMiddleware = require('./middlewares/auth');
 const cors = require('cors');
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 // admin routes
 app.use('/api/admin', authRoutes);
 app.use('/api/admin', authMiddleware, categoryRoutes);
+app.use('/api/admin', authMiddleware, productRoutes);
 
 app.all('/', async (req, res) => {
     console.log("Just got a request!")
