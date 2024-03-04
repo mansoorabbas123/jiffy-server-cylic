@@ -4,7 +4,7 @@ const { db } = require("../dbConnect");
 
 const generateTokens = async (user) => {
     try {
-        const payload = { _id: user.id, role: user.role };
+        const payload = { id: user.id, role: user.role };
         const accessToken = jwt.sign(
             payload,
             process.env.ACCESS_TOKEN_PRIVATE_KEY,

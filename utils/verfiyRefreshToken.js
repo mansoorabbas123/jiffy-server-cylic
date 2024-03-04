@@ -3,24 +3,24 @@ const { QueryTypes } = require("sequelize");
 const { db } = require("../dbConnect");
 
 const verifyRefreshToken = (refreshToken) => {
-  return new Promise( async (res,rej) => {
-    try {
-        const token = await db.sequelize.query("SELECT token FROM user_tokens WHERE token = :token",{
-            replacements: {token: refreshToken},
-            type: QueryTypes.SELECT
-        })
-        if(!token || token.length===0){
-            return rej({error:true, message: "Invalid refresh token"});
+    return new Promise(async (res, rej) => {
+        try {
+            const token = await db.sequelize.query("SELECT token FROM user_tokens WHERE token = :token", {
+                replacements: { token: refreshToken },
+                type: QueryTypes.SELECT
+            })
+            if (!token || token.length === 0) {
+                return rej({ error: true, message: "Invalid refresh token" });
+            }
+            const verified = await jwt.verify(refreshToken, process.env.REFRESH_TOKEN_PRIVATE_KEY);
+            if (!verified) {
+                return rej({ error: true, message: "Expired or invalid refresh token" })
+            }
+            return res({ error: false, message: "valid refresh token", tokenDetails: verified })
+        } catch (error) {
+            return rej({ error: true, message: "server error" })
         }
-        const verified = await jwt.verify(refreshToken,process.env.REFRESH_TOKEN_PRIVATE_KEY);
-        if(!verified){
-            return rej({error: true, message: "Expired or invalid refresh token"})
-        }
-        res({error:false, message: "valid refresh token",tokenDetails:verified })
-    } catch (error) {
-        return rej({error: true, message: "server error"})
-    }
-  })
+    })
 }
 
 module.exports = verifyRefreshToken;
